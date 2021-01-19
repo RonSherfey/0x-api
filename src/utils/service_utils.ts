@@ -21,9 +21,7 @@ import {
     PERCENTAGE_SIG_DIGITS,
     ZERO,
 } from '../constants';
-import {
-    POSITIVE_SLIPPAGE_FEE_TRANSFORMER_GAS
-} from '@0x/asset-swapper/lib/src/constants'
+import { POSITIVE_SLIPPAGE_FEE_TRANSFORMER_GAS } from '@0x/asset-swapper/lib/src/constants';
 import { logger } from '../logger';
 import { AffiliateFeeAmounts, GetSwapQuoteResponseLiquiditySource, AffiliateFee } from '../types';
 import { orderUtils } from '../utils/order_utils';
@@ -188,10 +186,10 @@ export const serviceUtils = {
             .dividedBy(fee.buyTokenPercentageFee + 1)
             .integerValue(BigNumber.ROUND_DOWN);
         let gasCost = ZERO;
-        if (!buyTokenFeeAmount.isZero()) { 
+        if (!buyTokenFeeAmount.isZero()) {
             gasCost = AFFILIATE_FEE_TRANSFORMER_GAS;
-        } 
-        if (fee.feeType === AffiliateFeeType.PositiveSlippageFee) { 
+        }
+        if (fee.feeType === AffiliateFeeType.PositiveSlippageFee) {
             gasCost = POSITIVE_SLIPPAGE_FEE_TRANSFORMER_GAS;
         }
         return {
