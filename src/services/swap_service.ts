@@ -276,14 +276,14 @@ export class SwapService {
 
         const allowanceTarget = isETHSell ? NULL_ADDRESS : erc20AllowanceTarget;
 
-        const { takerAssetToEthRate, makerAssetToEthRate } = swapQuote;
+        const { ethToTakerAssetRate, ethToMakerAssetRate } = swapQuote;
 
         // Convert into unit amounts
         const wethToken = getTokenMetadataIfExists('WETH', CHAIN_ID)!;
-        const sellTokenToEthRate = takerAssetToEthRate
+        const sellTokenToEthRate = ethToTakerAssetRate
             .times(new BigNumber(10).pow(wethToken.decimals - takerTokenDecimals))
             .decimalPlaces(takerTokenDecimals);
-        const buyTokenToEthRate = makerAssetToEthRate
+        const buyTokenToEthRate = ethToMakerAssetRate
             .times(new BigNumber(10).pow(wethToken.decimals - makerTokenDecimals))
             .decimalPlaces(makerTokenDecimals);
 
